@@ -1,17 +1,17 @@
 let person = {
     nome: 'Cicrano',
-    sobrenome: 'Da Silva',
     idade: 20,
     social: {
         facebook: 'b7web',
-        instagram: '@teste'
-    },
-    nomeCompleto: function() {
-        return `${this.nome} ${this.sobrenome}`;
+        instagram: {
+            url: '@teste',
+            seguidores: 2000,
+        },
     }
 };
 
-//Desconstruindo um objeto
-let { nome, sobrenome, idade } = person;
+function pegarNome({nome, sobrenome = 'Da Silva', social:{instagram:{url:instagram}}}) {
+    return `${nome} ${sobrenome} siga em ${instagram}`;
+}
 
-console.log(nome, sobrenome, idade);
+console.log(pegarNome(person));
